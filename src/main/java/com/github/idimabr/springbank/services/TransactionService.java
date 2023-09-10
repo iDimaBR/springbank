@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class TransactionService {
@@ -27,9 +28,12 @@ public class TransactionService {
     @Autowired
     private RestTemplateBuilder restTemplateBuilder;
 
-    public void createTransaction(TransactionDTO transaction) throws Exception {
-        final User sender = this.userService.findUserById(transaction.senderID());
-        final User receiver = this.userService.findUserById(transaction.receiverID());
+    public Transaction createTransaction(TransactionDTO transaction) throws Exception {
+        final User sender = this.userService.findUserByEmail(transaction.sender());
+        final User receiver = this.userService.findUserByEmail(transaction.receiver());
+
+        if(sender.getId().equals(receiver.getId()))
+            throw new Exception("Não é possível enviar dinheiro para sí mesmo.");
 
         final BigDecimal amount = transaction.amount();
         userService.validateTransaction(sender, amount);
@@ -51,14 +55,14 @@ public class TransactionService {
         this.repository.save(newTransaction);
         this.userService.saveUser(sender);
         this.userService.saveUser(receiver);
+
+        return newTransaction;
     }
 
     public boolean authorizeTransaction(BigDecimal value){
         if(value.compareTo(BigDecimal.ZERO) <= 0) return false;
-
         final ResponseEntity<Map> response = restTemplateBuilder.build().getForEntity("https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6", Map.class);
 
-        if(!response.hasBody()) return false;
-        return response.getStatusCode() == HttpStatus.OK && response.getBody().get("message") == "Autorizado";
+        return response.getStatusCode() == HttpStatus.OK && response.hasBody() && response.getBody().get("message").equals("Autorizado");
     }
 }
