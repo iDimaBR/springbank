@@ -21,8 +21,12 @@ public class UserService {
         }
     }
 
-    public User findUserById(Long id){
-        return this.repository.findUserById(id).orElseThrow();
+    public User findUserById(Long id) throws Exception {
+        return this.repository.findUserById(id).orElseThrow(() -> new Exception("Usuário não encontrado!"));
+    }
+
+    public User findUserByEmail(String email) throws Exception {
+        return this.repository.findUserByEmail(email).orElseThrow(() -> new Exception("Usuário não encontrado!"));
     }
 
     public void saveUser(User user){
