@@ -4,6 +4,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 
-public record TransactionDTO(@NotNull BigDecimal amount, @NotNull Long senderID, @NotNull Long receiverID) {
+public record TransactionDTO(@NotNull BigDecimal amount, @NotNull String sender, @NotNull String receiver) {
 
 }
