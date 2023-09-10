@@ -113,6 +113,3 @@ Cria uma nova transação entre dois usuários no sistema.
 
 - [MySQL]([https://redis.io/](https://www.mysql.com)) - Banco de dados SQL para armazenar os usuários
 - [Spring](https://spring.io) - Ambiente de execução da API Restful
-  - [Bull](https://github.com/OptimalBits/bull) - Biblioteca para manipulação de filas de mensagens utilizando Redis
-  - [AWS SDK for JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SES.html#constructor-property) - SDK da AWS para envio de e-mails utilizando o serviço Simple Email Service (SES)
-
