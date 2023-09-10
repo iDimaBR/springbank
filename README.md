@@ -111,5 +111,5 @@ Cria uma nova transação entre dois usuários no sistema.
 
 ## Tecnologias Utilizadas
 
-- [MySQL]([https://redis.io/](https://www.mysql.com)) - Banco de dados SQL para armazenar os usuários
+- [MySQL](https://www.mysql.com) - Banco de dados SQL para armazenar os usuários
 - [Spring](https://spring.io) - Ambiente de execução da API Restful
