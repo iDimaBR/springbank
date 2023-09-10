@@ -1,6 +1,7 @@
 package com.github.idimabr.springbank.entities;
 
 
+import com.github.idimabr.springbank.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -11,7 +12,8 @@ import java.math.BigDecimal;
 
 @Entity(name="users")
 @Table(name="users")
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
@@ -28,4 +30,12 @@ public class User {
     private String password;
     private BigDecimal balance;
 
+    public User(UserDTO data){
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.balance = data.balance();
+        this.document = data.document();
+        this.password = data.password();
+        this.email = data.email();
+    }
 }
