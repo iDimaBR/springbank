@@ -11,7 +11,7 @@ Esses endpoints permitem você criar usuários, listar os usuários e enviar din
 
 ## POST
 `BASE URL` [/users/create](#post-userscreate)<br/>
-`BASE URL` [/transactions/create](#)<br/>
+`BASE URL` [/transactions/create](#post-transactionscreate)<br/>
 ___
 
 ### GET /users
