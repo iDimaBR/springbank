@@ -2,6 +2,8 @@
 
 Esse projeto é uma API Restful construída usando Java, Java Spring e MySQL como Banco de dados.
 
+``Esse projeto foi baseado no Desafio do Picpay.``
+
 # Endpoints
 
 Esses endpoints permitem você criar usuários, listar os usuários e enviar dinheiro para outros usuários.
